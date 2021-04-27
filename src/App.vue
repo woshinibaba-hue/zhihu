@@ -1,27 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="container">
+    <Hearch :userInfo="UserInfo"></Hearch>
+    <Login></Login>
+    <Home></Home>
+    <Floor></Floor>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Home from './view/Home/Home.vue'
+import Login from './view/Login/Login.vue'
+import Hearch, { UserProps } from './components/Hearch/Hearch.vue'
+import Floor from './components/Floor/index.vue'
+const UserInfo: UserProps = {
+  isLogin: true,
+  name: 'lisi'
+}
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
+  components: { Hearch, Floor, Home, Login },
+  setup() {
+    return {
+      UserInfo
+    }
   }
 })
 </script>
 
 <style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.container {
+  min-width: 720px;
+  padding: 0 !important;
 }
 </style>
