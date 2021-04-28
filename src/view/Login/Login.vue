@@ -21,11 +21,13 @@
 import { defineComponent, ref } from 'vue'
 import ValidateForm from '../../components/ValidateForm/ValidateForm.vue'
 import VerifyInput, { RulesProp, removeInpt } from '../../components/VerifyInput/VerifyInput.vue'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   components: { ValidateForm, VerifyInput },
   setup() {
     const InputRef = ref()
+    const router = useRouter()
     // 自定义组件绑定的v-model
     // eslint-disable-next-line prefer-const
     let emailVal = ref('111@11.cn')
@@ -61,6 +63,7 @@ export default defineComponent({
       if (result) {
         // 当点击按钮之后，触发该自定义函数，用于清除表单内容
         removeInpt.emit('removeInp')
+        router.push('/')
       }
     }
     return {

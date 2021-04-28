@@ -7,9 +7,9 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, watch, onUnmounted, onMounted } from 'vue'
+import { defineComponent, ref, onUnmounted, onMounted } from 'vue'
 // 引入自定义hooks函数
-import useClickOutside from '../../hooks/useClickOutside'
+// import useClickOutside from '../../hooks/useClickOutside'
 
 export default defineComponent({
   props: {

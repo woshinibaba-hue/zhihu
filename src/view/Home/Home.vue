@@ -14,34 +14,15 @@
 import { defineComponent } from 'vue'
 import ColumnList from '../../components/ColumnList/index.vue'
 
+import { testData } from '../../testData'
+
 export default defineComponent({
+  name: 'Home',
   components: {
     ColumnList
   },
   setup() {
-    const list = [
-      {
-        id: 1
-      },
-      {
-        id: 2
-      },
-      {
-        id: 3,
-        avatar: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3681880960,455182084&fm=26&gp=0.jpg',
-        title: '1111',
-        description: '555555'
-      },
-      {
-        id: 4
-      },
-      {
-        id: 5
-      },
-      {
-        id: 6
-      }
-    ]
+    const list = testData
     return {
       list
     }

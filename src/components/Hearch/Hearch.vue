@@ -1,9 +1,9 @@
 <template>
-  <nav class="navbar navbar-dark bg-primary justify-content-between mb-4 px-4 p-3">
-    <a class="navbar-brand" href="#">纸糊专栏</a>
+  <nav class="navbar navbar-dark bg-primary justify-content-between mb-4 px-4">
+    <a class="navbar-brand" @click="toPath('/')">纸糊专栏</a>
     <ul v-if="!userInfo.isLogin" class="nav justify-content-end">
       <li class="list-inline-item">
-        <a class="btn btn-outline-light" href="#">登录</a>
+        <a class="btn btn-outline-light" @click="toPath('/login')">登录</a>
       </li>
       <li class="list-inline-item">
         <a class="btn btn-outline-light" href="#">注册</a>
@@ -25,6 +25,7 @@
 import { defineComponent, PropType } from 'vue'
 import Dropdown from '../Dropdown/Dropdown.vue'
 import DropdownItem from '../DropdownItem/DropdownItem.vue'
+import { useRouter } from 'vue-router'
 // 定义传递过来的 props 接口
 export interface UserProps {
   isLogin: boolean
@@ -37,6 +38,16 @@ export default defineComponent({
     userInfo: {
       type: Object as PropType<UserProps>,
       required: true
+    }
+  },
+  setup() {
+    const router = useRouter()
+    // ? 利用编程式导航跳转路由
+    const toPath = path => {
+      router.push(path)
+    }
+    return {
+      toPath
     }
   }
 })
