@@ -26,7 +26,8 @@ import { defineComponent, PropType } from 'vue'
 import Dropdown from '../Dropdown/Dropdown.vue'
 import DropdownItem from '../DropdownItem/DropdownItem.vue'
 import { useRouter } from 'vue-router'
-// 定义传递过来的 props 接口
+
+// * 定义传递过来的 props 接口
 export interface UserProps {
   isLogin: boolean
   id?: number
@@ -42,7 +43,7 @@ export default defineComponent({
   },
   setup() {
     const router = useRouter()
-    // ? 利用编程式导航跳转路由
+    // * 利用编程式导航跳转路由
     const toPath = path => {
       router.push(path)
     }

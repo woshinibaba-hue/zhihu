@@ -19,8 +19,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { ColumDetailData } from '../../testData'
+import { computed, defineComponent } from 'vue'
+import { useStore } from 'vuex'
+import { GloballProps } from '../../store/store'
 
 export default defineComponent({
   props: {
@@ -29,7 +30,9 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const listItem = ColumDetailData.filter(item => (item.columId === props.columId ? item : ''))
+    const store = useStore<GloballProps>()
+    const lists = computed(() => store.state.ColumDetails).value
+    const listItem = lists.filter(item => (item.columId === props.columId ? item : ''))
     console.log(listItem)
     return {
       listItem
@@ -47,5 +50,3 @@ export default defineComponent({
   -webkit-box-orient: vertical;
 }
 </style>
-
-function columId(columId: any) { throw new Error('Function not implemented.') } function columId(columId: any) { throw new Error('Function not implemented.') }
