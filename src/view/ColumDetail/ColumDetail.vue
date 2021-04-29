@@ -16,15 +16,16 @@
 import { defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import PropList from '../../components/PropList/PropList.vue'
-import { testData } from '../../testData'
+import { useStore } from 'vuex'
 export default defineComponent({
   components: {
     PropList
   },
   setup() {
     const route = useRoute()
+    const store = useStore()
     const id = route.params.id as string
-    const testItem = testData.find(item => item.id === parseInt(id))
+    const testItem = store.getters.getColum(parseInt(id))
     return {
       id,
       testItem

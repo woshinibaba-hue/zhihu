@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 import { useStore } from 'vuex'
 import { GloballProps } from '../../store/store'
 
@@ -31,9 +31,9 @@ export default defineComponent({
   },
   setup(props) {
     const store = useStore<GloballProps>()
-    const lists = computed(() => store.state.ColumDetails).value
-    const listItem = lists.filter(item => (item.columId === props.columId ? item : ''))
-    console.log(listItem)
+    // const lists = computed(() => store.state.ColumDetails).value
+    // const listItem = lists.filter(item => (item.columId === props.columId ? item : ''))
+    const listItem = store.getters.getProps(props.columId)
     return {
       listItem
     }
