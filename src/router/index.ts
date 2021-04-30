@@ -3,6 +3,7 @@ const Home = () => import('../view/Home/Home.vue')
 const Login = () => import('../view/Login/Login.vue')
 const Column = () => import('../view/Column/Column.vue')
 const ColumnDetail = () => import('../view/ColumDetail/ColumDetail.vue')
+const CreateProp = () => import('../view/CreateProp/CreateProp.vue')
 
 // 配置路由
 const routes: Array<RouteRecordRaw> = [
@@ -21,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/columndetail/:id',
     name: 'ColumnDetail',
     component: ColumnDetail
+  },
+  {
+    path: '/create',
+    name: 'CreateProp',
+    component: CreateProp
   }
 ]
 

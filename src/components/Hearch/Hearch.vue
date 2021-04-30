@@ -12,7 +12,7 @@
     <ul v-else class="nav justify-content-end">
       <li class="nav-item">
         <Dropdown :title="`你好 ${userInfo.name}`">
-          <dropdown-item> <a href="javascript:;" class="dropdown-item">新建文章</a> </dropdown-item>
+          <dropdown-item> <a href="javascript:;" class="dropdown-item" @click="toPath('/create')">新建文章</a> </dropdown-item>
           <dropdown-item> <a href="javascript:;" class="dropdown-item">编辑资料</a> </dropdown-item>
           <dropdown-item> <a href="javascript:;" class="dropdown-item">退出登录</a> </dropdown-item>
         </Dropdown>

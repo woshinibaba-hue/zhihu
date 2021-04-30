@@ -5,22 +5,28 @@ interface UserInfo {
   isLogin: boolean
   id?: number
   name?: string
+  columId?: number
 }
 export interface GloballProps {
   columns: ColumProps[]
   ColumDetails: ColumDetail[]
   user: UserInfo
 }
+export type ColumDetails = ColumDetail
 // 创建store
 export default createStore<GloballProps>({
   state: {
     columns: testData,
     ColumDetails: ColumDetailData,
-    user: { isLogin: false }
+    user: { isLogin: true, name: '张三', columId: 2 }
   },
   mutations: {
     login(state) {
       state.user = { ...state.user, isLogin: true, name: '张三' }
+    },
+    publish(state, payload) {
+      console.log(payload)
+      state.ColumDetails.push(payload)
     }
   },
   getters: {

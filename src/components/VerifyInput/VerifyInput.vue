@@ -1,6 +1,7 @@
 <template>
   <div>
-    <input class="form-control mb-2" :class="{ 'is-invalid': InputRef.err }" :value="InputRef.val" @input="updateValue" @blur="verifyInput" v-bind="attrs" />
+    <input v-if="tagType === 'input'" class="form-control mb-2" :class="{ 'is-invalid': InputRef.err }" :value="InputRef.val" @input="updateValue" @blur="verifyInput" v-bind="attrs" />
+    <textarea rows="10" v-else class="form-control mb-2" :class="{ 'is-invalid': InputRef.err }" :value="InputRef.val" @input="updateValue" @blur="verifyInput" v-bind="attrs" />
     <!-- 在自定义模板当中可以使用v-bind去绑定使用该自定义组件时传递过来的属性 -->
     <div v-if="InputRef.err" class="invalid-feedback">{{ InputRef.message }}</div>
   </div>
@@ -18,12 +19,17 @@ interface RuleProp {
 // 类型别名
 // RulesProp 类型是基于上面 RuleProp 接口的数组类型
 export type RulesProp = RuleProp[]
+export type tagType = 'input' | 'textarea'
 export const removeInpt = mitt()
 export default defineComponent({
   props: {
     // 接受的props参数，限定类型为 上面的  RulesProp
     rule: Array as PropType<RulesProp>,
-    modelValue: String
+    modelValue: String,
+    tagType: {
+      type: String as PropType<tagType>,
+      default: 'input'
+    }
   },
   // 简单点来说就是，该组件的prop并没有对应的属性来接受，使用该自定义组件传递过来的属性，而这些属性会默认继承到当前组件的根元素上
   inheritAttrs: false, // 不需要根组件继承 attribute

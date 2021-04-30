@@ -2,7 +2,7 @@
   <div class="validate-form">
     <!-- 这个 name='default 是默认的属性，可以省略' -->
     <slot name="default"></slot>
-    <div class="submit" @click.prevent="submitForm">
+    <div class="submit" @click="submitForm">
       <slot name="submit">
         <!-- 下面是默认内容，如果没有使用上面的sumit插槽，会默认显示下面的插槽 -->
         <button type="submit" class="btn btn-primary">登录</button>
