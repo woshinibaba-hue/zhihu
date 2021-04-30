@@ -18,7 +18,7 @@ export default createStore<GloballProps>({
   state: {
     columns: testData,
     ColumDetails: ColumDetailData,
-    user: { isLogin: true, name: '张三', columId: 2 }
+    user: { isLogin: false, name: '张三', columId: 2 }
   },
   mutations: {
     login(state) {
